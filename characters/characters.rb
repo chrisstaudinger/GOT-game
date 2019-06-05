@@ -4,26 +4,30 @@ require_relative './../items/healingItems.rb'
 require_relative './../items/dmgItems.rb'
 require_relative './../characters/enemies.rb'
 
+module Players
+    class Player
+        @@count = 0
+        attr_accessor(:name, :health, :dmg, :inventory)
+        def initialize(name)
+            @@count += 1
+            @name = name
+            @health = 1000
+            @dmg = 100
+            @inventory = []
+        end
+        include Behaviours
+        def self.count_player()
+            @@count
+        end
+        def to_s
+            "Player's name is #{@name}, health is #{@health}, damage is #{@dmg}"
+        end
+    end
 
-class Player
-    @@count = 0
-    attr_accessor(:name, :health, :dmg, :inventory)
-    def initialize(name)
-        @@count += 1
-        @name = name
-        @health = 1000
-        @dmg = 100
-        @inventory = []
-    end
-    include Behaviours
-    def self.count_player()
-        @@count
-    end
-    def to_s
-        "Player's name is #{@name}, health is #{@health}, damage is #{@dmg}"
-    end
+    # daenerys_targaryen = Player.new("Daenerys Targaryen")
+    jon_snow = Player.new("Jon Snow")
+    arya_stark = Player.new("Arya Stark")
 end
-
 
 # puts potion = Healing_item.new()
 # Healing_item.new()
