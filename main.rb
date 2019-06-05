@@ -56,12 +56,16 @@ def load_game()     #load game display
 end
 puts load_game()
 
-File.open("./ascii-art/dragon1.txt", "r") do |f|
-    f.each_char do |c|
-        print c
-        sleep(0.008)
+def print_ascii_art(file, color)
+    File.open(file, "r+") do |f|
+        f.each_char do |c|
+            print Paint[c, color.to_sym, :bright]
+            sleep(0.008)
+        end
     end
 end
+
+print_ascii_art("./ascii-art/dragon1.txt", "red")
 
 prompt = TTY::Prompt.new
 users_character = prompt.select("Choose your destiny?".upcase(), player_options)
