@@ -35,8 +35,10 @@ module DaenerysTStoryline
                 """
             )
             player_battle_enemy_intro(whitewalker1)
+            print_ascii_art("./ascii-art/skeleton1.txt", "white")
             player_battle_enemy(daenerys_targaryen, whitewalker1)
         elsif (user_choice == "Turn Right".strip)
+            print_ascii_art("./ascii-art/skeleton1.txt", "white")
             player_escape_statement(
                 """
                 You run down the dimly lit corridor...
@@ -53,7 +55,33 @@ module DaenerysTStoryline
         else
             user_make_choice("Turn Left", "Turn Right")
         end
+
+        print_story(
+            """\n
+            That was scary!!
+            Too close for comfort...
+            Where am I now anyway??\n
+            """
+        )
+        print_story(
+            """\n
+            'You are in my castle...''
+            \"Mother of Dragons...\"
+            'Though I don't like unwanted guest in my castle. You can think of it as your TOMB...'\n
+            """
+        )
+        print_story(
+            """
+            'CERSEI!'
+            'I should have known you were behind all this.'
+            'That putrid smell earlier gave you away'
+            'Enough of the chit chat...'
+            'It's time for you to meet your Queen!'
+            """
+        )
     end
 end
+
+
 
 

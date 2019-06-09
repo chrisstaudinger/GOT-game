@@ -13,10 +13,7 @@ module Story_methods
 
     def enemy_encounter_statement(enemy)
         statement = "You've encountered a #{enemy.name}! What are you going to do?"
-        statement.each_char do |c|
-            print c
-            sleep(0.03)
-        end
+        char_printer(statement)
     end
     
     def user_make_choice(option1,option2)
@@ -57,7 +54,7 @@ module Story_methods
     end
     
     def player_attack_enemy(player, enemy)
-        puts "Which attack are you going to do?"
+        puts "\nWhich attack are you going to do?"
             user_make_choice_prompt = TTY::Prompt.new()
             users_options = ["Melee Attack"]
             users_choice = user_make_choice_prompt.select("", users_options)
@@ -71,11 +68,22 @@ module Story_methods
     end
 
     def enemy_dead_script(enemy)
-        puts "You killed #{enemy.name}. My hero"
+        script = "\n\nYou killed #{enemy.name}. My hero"
+        char_printer(script)
     end
     
     def player_dead_script(player)
-        puts "You died! Noob!"
+        script = "\n\nYou died! Noob!"
+        char_printer(script)
+    end
+
+    def print_ascii_art(file, color)
+        File.open(file, "r+") do |f|
+            f.each_char do |c|
+                print Paint[c, color.to_sym, :bright]
+                sleep(0.008)
+            end 
+        end
     end
 
 end

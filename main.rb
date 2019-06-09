@@ -57,15 +57,6 @@ def load_game()     #load game display
 end
 puts load_game()
 
-def print_ascii_art(file, color)
-    File.open(file, "r+") do |f|
-        f.each_char do |c|
-            print Paint[c, color.to_sym, :bright]
-            sleep(0.008)
-        end
-    end
-end
-
 print_ascii_art("./ascii-art/dragon1.txt", "red")
 
 choose_player_prompt = TTY::Prompt.new
