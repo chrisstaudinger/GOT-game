@@ -1,7 +1,16 @@
 module Story_methods
+
+    
     def user_make_choice(option1,option2)
-        puts "1. #{option1} 2. #{option2}"
+        user_make_choice_prompt = TTY::Prompt.new()
+        users_options = []
+        users_options << option1
+        users_options << option2
+        users_choice = user_make_choice_prompt.select("", users_options)
+        # puts "1. #{option1} 2. #{option2}"
     end
+
+    
 
     def enemy_dead_script()
         puts "You killed a xyz. My hero"

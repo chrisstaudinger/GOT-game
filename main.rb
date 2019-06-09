@@ -35,6 +35,7 @@ players.each do |player|
     player_options << player[:name]
 end
 
+
 def welcome_window()
     font = TTY::Font.new(:doom)
     welcome_message1 = font.write("Welcome  To", letter_spacing: 3)
@@ -67,26 +68,26 @@ end
 
 print_ascii_art("./ascii-art/dragon1.txt", "red")
 
-prompt = TTY::Prompt.new
-users_character = prompt.select("Choose your destiny?".upcase(), player_options)
+choose_player_prompt = TTY::Prompt.new
+users_character = choose_player_prompt.select("Choose your destiny?".upcase(), player_options)
 player1 = nil
 if (users_character == players[0][:name])
     puts "You have selected #{players[0][:name]}"
-    sleep(2)
     puts "Good Luck ..."
+    sleep(2)
     player1 = Players::Player.new(players[0][:name])
     players[0][:module]::run_jon_storyline()
 elsif
     (users_character == players[1][:name])
     puts "You have selected #{players[1][:name]}"
-    sleep(2)
     puts "Good Luck ..."
+    sleep(2)
     player1 = Players::Player.new(players[1][:name])
     players[1][:module]::run_daenerys_storyline()
 else
     puts "You have selected #{players[2][:name]}"
-    sleep(2)
     puts "Good Luck ..."
+    sleep(2)
     player1 = Players::Player.new(players[2][:name])
     players[1][:module]::run_arya_storyline()
 end
