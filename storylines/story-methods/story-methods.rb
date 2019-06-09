@@ -1,5 +1,20 @@
 module Story_methods
 
+    def storyprint(story_string)       
+        story = story_string
+        story.each_char do |c|
+            print c
+            sleep(0.03)
+        end
+    end
+
+    def enemy_encounter_statement(enemy)
+        statement = "You've encountered a #{enemy.name}! What are you going to do?"
+        statement.each_char do |c|
+            print c
+            sleep(0.03)
+        end
+    end
     
     def user_make_choice(option1,option2)
         user_make_choice_prompt = TTY::Prompt.new()
@@ -7,7 +22,6 @@ module Story_methods
         users_options << option1
         users_options << option2
         users_choice = user_make_choice_prompt.select("", users_options)
-        # puts "1. #{option1} 2. #{option2}"
     end
 
     
