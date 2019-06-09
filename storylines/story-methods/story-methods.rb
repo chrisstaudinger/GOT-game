@@ -1,11 +1,14 @@
 module Story_methods
 
-    def print_story(story_string)       
-        story = story_string
-        story.each_char do |c|
+    def char_printer(str)
+        str.each_char do |c|
             print c
             sleep(0.03)
         end
+    end
+
+    def print_story(story_string)       
+        char_printer(story_string)
     end
 
     def enemy_encounter_statement(enemy)
@@ -47,29 +50,31 @@ module Story_methods
             player_attack_enemy(player, enemy)
         end
         if enemy.health <= 0
-            enemy_dead_script() 
+            enemy_dead_script(enemy) 
         else
-            player_dead_script()
+            player_dead_script(player)
         end
     end
     
     def player_attack_enemy(player, enemy)
-        puts "Which attack are you going to do? \n1. melee attack"
-        if (gets().chomp() == 1.to_s)
+        puts "Which attack are you going to do?"
+            user_make_choice_prompt = TTY::Prompt.new()
+            users_options = ["Melee Attack"]
+            users_choice = user_make_choice_prompt.select("", users_options)
+        if (users_choice == "Melee Attack".strip())
             player.player_base_attack(enemy) 
-            sleep(3)
             enemy.game_actor_base_attack(player)
         else
-            puts "You have not inputted an appropriate action\nPress '1' to melee attack"
+            puts "You have not inputted an appropriate action\nSelect an attack from your Attack options"
             gets().chomp()
         end
     end
 
-    def enemy_dead_script()
-        puts "You killed a xyz. My hero"
+    def enemy_dead_script(enemy)
+        puts "You killed #{enemy.name}. My hero"
     end
     
-    def player_dead_script()
+    def player_dead_script(player)
         puts "You died! Noob!"
     end
 

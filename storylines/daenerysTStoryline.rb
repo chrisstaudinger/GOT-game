@@ -29,7 +29,7 @@ module DaenerysTStoryline
         if (user_choice == "Turn Left".strip)
             print_story(
                 """
-                You run down the dimly lit corridor..
+                You run down the dimly lit corridor...
                 Bang!!
                 You've ran straight into a wall
                 """
