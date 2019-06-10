@@ -44,6 +44,7 @@ module Game_actors
         end
     end
     whitewalker1 = Low_level_game_actor.new("White Walker")
+    whitewalker2 = Low_level_game_actor.new("White Walker")
     night_king = Boss.new("Night King")
 end
 

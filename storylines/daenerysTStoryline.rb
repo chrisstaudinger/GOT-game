@@ -11,6 +11,7 @@ module DaenerysTStoryline
     def run_daenerys_storyline()
         daenerys_targaryen = Players::Player.new("Daenerys Targaryen")
         whitewalker1 = Game_actors::Low_level_game_actor.new("White Walker")
+        whitewalker2 = Game_actors::Low_level_game_actor.new("White Walker")
 
         print_story(
             """
@@ -27,6 +28,7 @@ module DaenerysTStoryline
         
         user_choice = user_make_choice("Turn Left", "Turn Right")
         if (user_choice == "Turn Left".strip)
+            battle_1_user_choice = "option 1"
             print_story(
                 """
                 You run down the dimly lit corridor...
@@ -37,10 +39,14 @@ module DaenerysTStoryline
             player_battle_enemy_intro(whitewalker1)
             print_ascii_art("./ascii-art/skeleton1.txt", "white")
             player_battle_enemy(daenerys_targaryen, whitewalker1)
+            if (whitewalker1.health <= 0) 
+                print_ascii_art("./ascii-art/skeleton_dead1.txt", "white")
+            end
         elsif (user_choice == "Turn Right".strip)
+            battle_1_user_choice = "option 2"
             print_ascii_art("./ascii-art/skeleton1.txt", "white")
             player_escape_statement(
-                """
+                """\n
                 You run down the dimly lit corridor...
                 The chilling footsteps have turned into a stampede following you...
                 Where is left to run?
@@ -51,9 +57,32 @@ module DaenerysTStoryline
                 Boom! You scrape through as the doors slam behind you...
                 """
             )
-            # player_battle_enemy(daenerys_targaryen, whitewalker1)
         else
             user_make_choice("Turn Left", "Turn Right")
+        end
+
+        if (battle_1_user_choice == "option 2")
+            print_story(
+            """\n
+            That was scary!!
+            Too close for comfort...
+            Where am I now anyway??\n
+            I need to get out of here and find Drogon.
+            That looks like an exit!
+            ...
+            SLAM!
+            Some of the roof caves in right in front of your exit.
+            ...
+            The rubble is shifting...
+            God dam it. It's another whitewalker!
+            """
+            )
+            player_battle_enemy_intro(whitewalker2)
+            print_ascii_art("./ascii-art/skeleton1.txt", "white")
+            player_battle_enemy(daenerys_targaryen, whitewalker1)
+            if (whitewalker2.health <= 0) 
+                print_ascii_art("./ascii-art/skeleton_dead1.txt", "white")
+            end
         end
 
         print_story(
