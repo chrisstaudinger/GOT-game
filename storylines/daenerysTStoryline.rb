@@ -1,9 +1,12 @@
 require_relative './story-methods/story-methods.rb'
 require_relative './../characters/characters.rb'
+require_relative './../items/healingItems.rb'
+require_relative './../items/dmgItems.rb'
 require 'pry'
 
 include Story_methods
 include Players
+include Healing_items
 
 
 module DaenerysTStoryline    
@@ -12,6 +15,7 @@ module DaenerysTStoryline
         daenerys_targaryen = Players::Player.new("Daenerys Targaryen")
         whitewalker1 = Game_actors::Low_level_game_actor.new("White Walker")
         whitewalker2 = Game_actors::Low_level_game_actor.new("White Walker")
+        potion1 = Healing_item.new()
 
         print_story(
             """
@@ -61,7 +65,6 @@ module DaenerysTStoryline
             user_make_choice("Turn Left", "Turn Right")
         end
 
-        if (battle_1_user_choice == "option 2")
             print_story(
             """\n
             That was scary!!
@@ -74,16 +77,24 @@ module DaenerysTStoryline
             Some of the roof caves in right in front of your exit.
             ...
             The rubble is shifting...
-            God dam it. It's another whitewalker!
+            ...
+            What is that????
+            ...
+            God dam it. 
+            It's another whitewalker!
             """
             )
             player_battle_enemy_intro(whitewalker2)
             print_ascii_art("./ascii-art/skeleton1.txt", "white")
-            player_battle_enemy(daenerys_targaryen, whitewalker1)
+            player_battle_enemy(daenerys_targaryen, whitewalker2)
             if (whitewalker2.health <= 0) 
                 print_ascii_art("./ascii-art/skeleton_dead1.txt", "white")
+                potion1.find_healing_item(daenerys_targaryen)
+                potion1.heal(daenerys_targaryen)
             end
-        end
+
+
+
 
         print_story(
             """\n
