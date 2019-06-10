@@ -20,7 +20,7 @@ module Players
             @@count
         end
         def to_s
-            "Player's name is #{@name}, health is #{@health}, damage is #{@dmg}"
+            "Player's name is #{@name}, health is #{@health}, damage is #{@dmg}, inventory has #{@inventory}"
         end
     end
 
