@@ -18,8 +18,11 @@ module DaenerysTStoryline
         daenerys_targaryen = Players::Player.new("Daenerys Targaryen")
         whitewalker1 = Game_actors::Low_level_game_actor.new("White Walker")
         whitewalker2 = Game_actors::Low_level_game_actor.new("White Walker")
+        cersei = Game_actors::Game_actor.new("Cersei Lannister")
         potion1 = Healing_item.new()
-        drogon = Dmg_item.new("Drogon", 150)
+        elixir = Superior_healing_item.new()
+        drogon = Dmg_item.new("Drogon", 150, "Dracarys")
+        rhaegal = Dmg_item.new("Rhaegal", 150, "Dracarys")
 
         print_story(D_t_storyline_intro)
 
@@ -59,6 +62,24 @@ module DaenerysTStoryline
 
         print_story(Post_whitewalker2_script1)
         print_story(D_t_storyline_post_whitewalker2_script1)
+        player_battle_enemy_intro(cersei)
+        print_ascii_art("./ascii-art/cersei1.txt", "red")
+        player_battle_enemy(daenerys_targaryen, cersei)
+        if (cersei.health <= 0) 
+            print_ascii_art("./ascii-art/skeleton_dead2.txt", "red")
+            elixir.find_healing_item(daenerys_targaryen)
+            elixir.heal(daenerys_targaryen)
+            print_story(Post_game_actor1_script1)
+            print_story(Post_game_actor1_script2)
+            print_story(D_t_storyline_found_rhaegal)
+            daenerys_targaryen.inventory << rhaegal
+            print_ascii_art("./ascii-art/dragon3.txt", "red")
+            print_story(D_t_storyline_post_game_actor1_script)
+            print_ascii_art("./ascii-art/night_king1.txt", "blue")
+            print_story(Night_king_script1)
+        end
+
+
     end
 end
 

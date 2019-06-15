@@ -34,7 +34,7 @@ module Story_methods
     def player_battle_enemy_intro(enemy)
         statement = """
                 The #{enemy.name} has you trapped!
-                In order to survive you must kill it.
+                In order to survive you must kill #{enemy.name}.
                 """
         statement.each_char do |c|
             print c
@@ -55,20 +55,28 @@ module Story_methods
     
     def player_attack_enemy(player, enemy)
         puts "\nWhich attack are you going to do?"
-            user_make_choice_prompt = TTY::Prompt.new()
-            users_options = ["Melee Attack"]
-            users_choice = user_make_choice_prompt.select("", users_options)
+        user_make_choice_prompt = TTY::Prompt.new()
+        users_options = ["Melee Attack"]
+        if (player.inventory != [])
+            users_options << player.inventory[0].name
+        end
+        users_choice = user_make_choice_prompt.select("", users_options)
         if (users_choice == "Melee Attack".strip())
             player.player_base_attack(enemy) 
             enemy.game_actor_base_attack(player)
+        elsif
+            (users_choice == player.inventory[0].name.strip())
+            player.player_special_attack(enemy) 
+            enemy.game_actor_base_attack(player)
         else
             puts "You have not inputted an appropriate action\nSelect an attack from your Attack options"
+            users_choice = user_make_choice_prompt.select("", users_options)
             gets().chomp()
         end
     end
 
     def enemy_dead_script(enemy)
-        script = "\n\nYou killed #{enemy.name}. My hero"
+        script = "\n\nUnstoppable!\nYou killed #{enemy.name}!"
         char_printer(script)
     end
     

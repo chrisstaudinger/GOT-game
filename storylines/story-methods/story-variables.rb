@@ -47,6 +47,21 @@ module Story_variables
     Drogon found you and placed you on his back.
     """
 
+    D_t_storyline_found_rhaegal = """\n
+    ....
+    Rooooaar!!!
+    ....
+    Whoosh
+    ....
+    Rhaegal found you!!!
+    ....
+    """
+
+    D_t_storyline_post_game_actor1_script = """\n
+    'Take me to him'
+    'And when we get there, don't let up on him, burn him into ashes!!'
+    """
+
     Corridor_batlle_enemy_script = """
     You run down the dimly lit corridor...
     Bang!!
@@ -68,5 +83,29 @@ module Story_variables
     That was scary!!
     Too close for comfort...
     Where am I now anyway??\n
+    """
+
+    Post_game_actor1_script1 = """\n
+    That was less than I expected...
+    May your sole rest now.
+    """
+
+    Post_game_actor1_script2 = """\n
+    No more distractions. It's now or never...
+    I am going to find him and I am going to kill him!
+    ....
+    """
+
+    Night_king_script1 = """\n\n
+    'Why child, you don't have to find me, I'm already here'
+    ....
+    'I've been watching your journey'
+    'You have become quite the fighter'
+    'In fact, I could see you becoming a leader in my army'
+    'Westeros is only a small part of the world my child. There are plenty of other kingdoms to conquer'
+    'I offer it to you now'
+    ...
+    'Will you join my cause and have powers beyond your wildest dreams?'
+    ....
     """
 end
