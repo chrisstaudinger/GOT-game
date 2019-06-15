@@ -66,7 +66,7 @@ module DaenerysTStoryline
         print_ascii_art("./ascii-art/cersei1.txt", "red")
         player_battle_enemy(daenerys_targaryen, cersei)
         if (cersei.health <= 0) 
-            print_ascii_art("./ascii-art/skeleton_dead2.txt", "red")
+            print_ascii_art("./ascii-art/cersei_dead1.txt", "red")
             elixir.find_healing_item(daenerys_targaryen)
             elixir.heal(daenerys_targaryen)
             print_story(Post_game_actor1_script1)
