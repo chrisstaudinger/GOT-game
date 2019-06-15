@@ -79,6 +79,19 @@ module DaenerysTStoryline
             print_story(Night_king_script1)
         end
 
+        user_choice = user_make_choice("Join The Night King & Lead His Army", "Refuse Offer & Kill The Night King")
+        if (user_choice == "Join The Night King & Lead His Army".strip)
+            print_story(Accept_night_king_offer_script)
+            print_story(Night_king_script2)
+            print_story(Player_deceive_night_king_script)
+            print_story(Night_king_script3)
+        elsif (user_choice == "Refuse Offer & Kill The Night King".strip)
+            print_story(Refuse_night_king_offer_script)
+            print_story(Night_king_script3)
+        else
+            user_make_choice("Join The Night King & Lead His Army", "Refuse Offer & Kill The Night King")
+        end
+
 
     end
 end

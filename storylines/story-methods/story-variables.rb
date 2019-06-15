@@ -108,4 +108,43 @@ module Story_variables
     'Will you join my cause and have powers beyond your wildest dreams?'
     ....
     """
+
+    Accept_night_king_offer_script = """\n\n
+    'I came here to kill you, but I didn't know this offer would be on the table...'
+    ...
+    'Eternal life leading an eternal army...'
+    'I don't think that is something I can refuse'
+    'Very well then...'
+    'Shall you turn me now?'
+    """
+
+    Night_king_script2 = """\n\n
+    'A wise choice my child'
+    ...
+    'Come my child'
+    'This will only hurt a little and afterwards nothing will be able to hurt you ever again...'
+    """
+
+    Player_deceive_night_king_script = """\n\n
+    '....'
+    'Arrrrgh'
+    Ting!! (steel smashing against steel)
+    ....
+    'You are more naive than I thought'
+    'I would never join your army!'
+    'I fight for the living and it's time now that you meet your death or undeath, removal of existience...'
+    'SMH...You get what I mean!!'
+    """
+
+    Refuse_night_king_offer_script = """\n\n
+    ....
+    'I am flattered that you think so highly of me, but I must refuse...'
+    'I fight for the living and it's time now that you meet your death or undeath, removal of existience...'
+    'SMH...You get what I mean!!'
+    """
+
+    Night_king_script3 = """\n\n
+    'Very well my child...''
+    'You will endure a slow death and become part of my army anyway'
+    """
 end
