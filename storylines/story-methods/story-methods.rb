@@ -101,7 +101,7 @@ module Story_methods
     
     def player_dead_script(player)
         print_ascii_art("./ascii-art/game_over.txt", "red")
-        # script = "\n\nYou died! Noob!"
+        Process.exit!(true)
     end
 
     def print_ascii_art(file, color)
