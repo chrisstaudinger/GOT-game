@@ -4,19 +4,38 @@ module Behaviours
         script = "\n#{self.name} melee attacked #{game_actor.name}, dealing #{self.dmg} damage!\n#{game_actor.name}'s health dropped to #{game_actor.health}."
         char_printer(script)
     end
+
     def player_special_attack(game_actor)
         game_actor.health -= self.inventory[0].dmg
         script = "\n#{self.name} used #{self.inventory[0].name} to #{self.inventory[0].attack_name} #{game_actor.name}, dealing #{self.inventory[0].dmg} damage!\n#{game_actor.name}'s health dropped to #{game_actor.health}."
         char_printer(script)
     end
-    def game_actor_base_attack(player)
-        player.health -= self.dmg
-        script = "\n\n#{self.name} melee attacked #{player.name}, dealing #{self.dmg} damage!\n#{player.name}'s health dropped to #{player.health}."
+
+    def player_special_attack2(game_actor)
+        game_actor.health -= self.inventory[1].dmg
+        script = "\n#{self.name} used #{self.inventory[1].name} to #{self.inventory[1].attack_name} #{game_actor.name}, dealing #{self.inventory[0].dmg} damage!\n#{game_actor.name}'s health dropped to #{game_actor.health}."
         char_printer(script)
     end
+
+    def player_ultimate_attack(game_actor)
+        damage = self.inventory[0].dmg + self.inventory[1].dmg
+        game_actor.health -= damage
+        script = "\n#{self.name} used #{self.inventory[0].name} & #{self.inventory[1].name} to #{self.inventory[0].attack_name} #{game_actor.name}, dealing #{damage} damage!\n#{game_actor.name}'s health dropped to #{game_actor.health}."
+        char_printer(script)
+    end
+
+    def game_actor_base_attack(player)
+        player.health -= self.dmg
+        script = "\n\n#{self.name} attacked #{player.name}, dealing #{self.dmg} damage!\n#{player.name}'s health dropped to #{player.health}."
+        char_printer(script)
+    end
+
     def game_actor_special_attack(player)
         player.health -= self.special_dmg
+        script = "\n\n#{self.name} special attacked #{player.name}, dealing #{self.dmg} damage!\n#{player.name}'s health dropped to #{player.health}."
+        char_printer(script)
     end
+
     def char_printer(str)
         str.each_char do |c|
             print c
@@ -24,31 +43,3 @@ module Behaviours
         end
     end
 end
-
-# class Player
-#     @@count = 0
-#     attr_accessor(:name, :health, :dmg)
-#     def initialize(name)
-#         @name = name
-#         @health = 1000
-#         @dmg = 100
-#         @@count += 1
-#     end
-
-#     include Behaviours    
-
-#     def self.count_player()
-#         @@count
-#     end
-
-#     def to_s
-#         "Player's name is #{@name}, health is #{@health}, damage is #{@dmg}"
-#     end
-# end
-
-# puts jon_snow = Player.new("John Snow")
-# puts daenerys_targaryen = Player.new("Daenerys Targaryen")
-# jon_snow.base_attack(jon_snow, daenerys_targaryen)
-# puts daenerys_targaryen
-# jon_snow.base_attack(jon_snow, daenerys_targaryen)
-# puts daenerys_targaryen

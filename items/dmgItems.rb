@@ -6,6 +6,7 @@ module Dmg_items
             @attack_name = attack_name
             @dmg = dmg
         end
+        
         def to_s
             "Dmg_item object's name is #{@name}, damage is #{@dmg}"
         end

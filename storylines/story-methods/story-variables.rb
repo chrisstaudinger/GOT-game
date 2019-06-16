@@ -112,17 +112,17 @@ module Story_variables
     Accept_night_king_offer_script = """\n\n
     'I came here to kill you, but I didn't know this offer would be on the table...'
     ...
-    'Eternal life leading an eternal army...'
+    'Eternal life, leading an eternal army...'
     'I don't think that is something I can refuse'
     'Very well then...'
     'Shall you turn me now?'
     """
 
     Night_king_script2 = """\n\n
-    'A wise choice my child'
+    'A wise choice'
     ...
     'Come my child'
-    'This will only hurt a little and afterwards nothing will be able to hurt you ever again...'
+    'This will only hurt a little, and afterwards nothing will be able to hurt you ever again...'
     """
 
     Player_deceive_night_king_script = """\n\n

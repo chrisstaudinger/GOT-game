@@ -57,8 +57,18 @@ module Story_methods
         puts "\nWhich attack are you going to do?"
         user_make_choice_prompt = TTY::Prompt.new()
         users_options = ["Melee Attack"]
+        ultimate_attack = ""
         if (player.inventory != [])
-            users_options << player.inventory[0].name
+            # users_options << player.inventory[0].name
+            player.inventory.each do |item|
+                if (player.inventory.length > 1)
+                    ultimate_attack += item.name + " "
+                end
+                users_options << item.name
+            end
+            if (ultimate_attack != "")
+                users_options << ultimate_attack.strip()
+            end
         end
         users_choice = user_make_choice_prompt.select("", users_options)
         if (users_choice == "Melee Attack".strip())
@@ -68,6 +78,14 @@ module Story_methods
             (users_choice == player.inventory[0].name.strip())
             player.player_special_attack(enemy) 
             enemy.game_actor_base_attack(player)
+        elsif
+            (users_choice == player.inventory[1].name.strip())
+            player.player_special_attack2(enemy) 
+            enemy.game_actor_base_attack(player)
+        elsif
+            (users_choice == ultimate_attack.strip())
+            player.player_ultimate_attack(enemy)
+            enemy.game_actor_base_attack(player)
         else
             puts "You have not inputted an appropriate action\nSelect an attack from your Attack options"
             users_choice = user_make_choice_prompt.select("", users_options)
@@ -76,13 +94,14 @@ module Story_methods
     end
 
     def enemy_dead_script(enemy)
+        sleep(1.5)
         script = "\n\nUnstoppable!\nYou killed #{enemy.name}!"
         char_printer(script)
     end
     
     def player_dead_script(player)
-        script = "\n\nYou died! Noob!"
-        char_printer(script)
+        print_ascii_art("./ascii-art/game_over.txt", "red")
+        # script = "\n\nYou died! Noob!"
     end
 
     def print_ascii_art(file, color)

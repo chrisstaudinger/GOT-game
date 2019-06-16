@@ -1,16 +1,13 @@
 require_relative './story-methods/story-methods.rb'
-require_relative './story-methods/story-variables.rb'
-require_relative './../characters/characters.rb'
-require_relative './../items/healingItems.rb'
-require_relative './../items/dmgItems.rb'
-require 'pry'
-
 include Story_methods
-include Players
-include Healing_items
-include Dmg_items
+require_relative './story-methods/story-variables.rb'
 include Story_variables
-
+require_relative './../characters/characters.rb'
+include Players
+require_relative './../items/healingItems.rb'
+include Healing_items
+require_relative './../items/dmgItems.rb'
+include Dmg_items
 
 module DaenerysTStoryline    
 
@@ -19,6 +16,7 @@ module DaenerysTStoryline
         whitewalker1 = Game_actors::Low_level_game_actor.new("White Walker")
         whitewalker2 = Game_actors::Low_level_game_actor.new("White Walker")
         cersei = Game_actors::Game_actor.new("Cersei Lannister")
+        night_king = Game_actors::Boss.new("Night King")
         potion1 = Healing_item.new()
         elixir = Superior_healing_item.new()
         drogon = Dmg_item.new("Drogon", 150, "Dracarys")
@@ -57,12 +55,10 @@ module DaenerysTStoryline
                 print_story(D_t_storyline_found_drogon)
                 daenerys_targaryen.inventory << drogon
                 print_ascii_art("./ascii-art/dragon2.txt", "red")
-                print daenerys_targaryen.to_s #Checking if Drogon dmg_item is was assigned to character
             end
 
         print_story(Post_whitewalker2_script1)
         print_story(D_t_storyline_post_whitewalker2_script1)
-        player_battle_enemy_intro(cersei)
         print_ascii_art("./ascii-art/cersei1.txt", "red")
         player_battle_enemy(daenerys_targaryen, cersei)
         if (cersei.health <= 0) 
@@ -91,6 +87,12 @@ module DaenerysTStoryline
         else
             user_make_choice("Join The Night King & Lead His Army", "Refuse Offer & Kill The Night King")
         end
+
+        player_battle_enemy(daenerys_targaryen, night_king)
+        if (night_king.health <= 0) 
+            print_ascii_art("./ascii-art/night_king_dead1.txt", "red")
+        end
+
 
 
     end
