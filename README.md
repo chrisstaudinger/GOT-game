@@ -18,7 +18,7 @@ A 'choose your own adventure' game running in the Bash command line written in R
 $ gem install bundler
 ```
 
-* This command installs of the dependencies
+* This command installs of the dependencies.
 ``` Ruby
 $ bundle install
 ```
@@ -52,7 +52,7 @@ Arya Stark's & Jon Snow's storylines have not been completed yet. I will be comi
 * Ruby core library
 
 ****
-##### There is an easter egg in this repository of how to beat the game :egg:
+##### There is an easter egg in this repository on how to beat the game :egg:
 ****
 
 
