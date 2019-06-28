@@ -1,5 +1,23 @@
 module Story_methods
 
+    def welcome_window()
+        font = TTY::Font.new(:doom)
+        welcome_message1 = font.write("Welcome  To The", letter_spacing: 3)
+        welcome_message2 = font.write("Game of Thrones", letter_spacing: 3)
+        puts Paint[welcome_message1, :red, :bright]
+        puts Paint[welcome_message2, :red, :bright]
+    end
+    
+    def load_game()
+        print "\nGame Loading".colorize(:green)
+        i = 0
+        until i >= 4 do
+            sleep 1 
+            print ".".colorize(:green)
+            i += 1
+        end
+    end
+
     def char_printer(str)
         str.each_char do |c|
             print c

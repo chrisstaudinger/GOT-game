@@ -10,6 +10,8 @@ require_relative './storylines/jonSStoryline.rb'
 include JonSStoryline
 require_relative './storylines/aryaSStoryline.rb'
 include AryaSStoryline
+require_relative './storylines/story-methods/story-methods.rb'
+include Story_methods
 
 players = [
     {
@@ -30,24 +32,7 @@ players.each do |player|
     player_options << player[:name]
 end
 
-def welcome_window()
-    font = TTY::Font.new(:doom)
-    welcome_message1 = font.write("Welcome  To The", letter_spacing: 3)
-    welcome_message2 = font.write("Game of Thrones", letter_spacing: 3)
-    puts Paint[welcome_message1, :red, :bright]
-    puts Paint[welcome_message2, :red, :bright]
-end
 welcome_window()
-
-def load_game()     #load game display
-    print "\nGame Loading".colorize(:green)
-    i = 0
-    until i >= 4 do
-        sleep 1 
-        print ".".colorize(:green)
-        i += 1
-    end
-end
 puts load_game()
 
 print_ascii_art("./ascii-art/dragon1.txt", "red")
