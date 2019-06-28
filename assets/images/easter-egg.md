@@ -1,7 +1,5 @@
 # Arya is the only character able to beat the Night King
 
-![] ( "Night King Ascii Art")
-
 ```
 
                                                   /===-                        
